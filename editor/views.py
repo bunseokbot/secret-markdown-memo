@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from editor.forms import MemoForm
+
+
+def index(request):
+    return render(request, 'editor/index.html', {'form': MemoForm})
