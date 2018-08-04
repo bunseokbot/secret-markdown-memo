@@ -12,4 +12,4 @@ install:
 
 script:
   - python manage.py migrate
-  - python -m pytest
+  - python manage.py test
