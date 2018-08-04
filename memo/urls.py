@@ -21,6 +21,6 @@ from markdownx import urls as markdownx
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('editor/', include('editor.urls')),
+    path('', include('editor.urls')),
     path('markdownx/', include(markdownx)),
 ]

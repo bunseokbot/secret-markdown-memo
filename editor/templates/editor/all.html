@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>My Secret Memo</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+        <style type="text/css">
+            .main {
+                margin: 5% 10% 100% 10%;
+            }
+
+            .header {
+                margin-bottom: 1.5%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <h1 class="ui header">My Secret Memo</h1>
+            </div>
+            <button class="ui blue button">
+                <i class="plus icon"></i>
+                추가
+            </button>
+            <form method="GET" style="float: right;">
+                <div class="ui action input">
+                    <input type="text" name="query" placeholder="Search...">
+                    <button class="ui icon button">
+                        <i class="search icon"></i>
+                    </button>
+                </div>
+            </form>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>업로드 시간</th>
+                        <th>마지막 수정 시간</th>
+                        <th>수정</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for memo in memos %}
+                        <tr>
+                            <td> {{ memo.title }} </td>
+                            <td> {{ memo.upload_time }} </td>
+                            <td> {{ memo.modify_time }} </td>
+                            <td>
+                                <a href="/editor/{{ memo.pk }}">수정</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $('.blue.button').click(function() {
+            window.location.href = '/editor/'
+        });
+    </script>
+</html>

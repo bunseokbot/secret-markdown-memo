@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>My Secret Memo</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+        <style type="text/css">
+            .main {
+                margin: 5% 10% 100% 10%;
+            }
+
+            .header {
+                margin-bottom: 1.5%;
+            }
+
+            .button {
+                margin-top: 2%;
+            }
+            
+            .markdownx-preview {
+                margin-top: 3%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <h1 class="ui header">Add New Memo</h1>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="ui form">
+                    <div class="field">
+                        <label>Title</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="field">
+                        <label>Content</label>
+                        {{ form.content }}
+                    </div>
+                </div>
+
+                {{ form.media }}
+
+                <div class="button">
+                    <button class="ui blue button" type="submit">수정</button>
+                </div>
+            </form>
+
+        </div>
+    </body>
+    <script type="text/javascript">
+        $('.blue.button').click(function() {
+            window.location.href = '/editor/'
+        });
+    </script>
+</html>
